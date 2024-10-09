@@ -16,6 +16,8 @@
   "dependencies": {
     "@remix-run/react": "^2.10.1",
     "@remix-run/server-runtime": "^2.10.1",
+    "@sentry/remix": "^8.33.1",
+    "@sentry/vite-plugin": "^2.22.5",
     "@shopify/hydrogen": "2024.7.9",
     "@shopify/remix-oxygen": "^2.0.8",
     "graphql": "^16.6.0",

@@ -6,3 +6,6 @@ node_modules
 /.mf
 .env
 .shopify
+
+# Sentry Config File
+.env.sentry-build-plugin

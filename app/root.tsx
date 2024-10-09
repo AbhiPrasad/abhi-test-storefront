@@ -1,3 +1,4 @@
+import { captureRemixErrorBoundaryError, withSentry } from "@sentry/remix";
 import {useNonce, getShopAnalytics, Analytics} from '@shopify/hydrogen';
 import {defer, type LoaderFunctionArgs} from '@shopify/remix-oxygen';
 import {
@@ -162,9 +163,11 @@ export function Layout({children}: {children?: React.ReactNode}) {
   );
 }
 
-export default function App() {
+function App() {
   return <Outlet />;
 }
+
+export default withSentry(App);
 
 export function ErrorBoundary() {
   const error = useRouteError();
@@ -177,6 +180,8 @@ export function ErrorBoundary() {
   } else if (error instanceof Error) {
     errorMessage = error.message;
   }
+
+  captureRemixErrorBoundaryError(error);
 
   return (
     <div className="route-error">
